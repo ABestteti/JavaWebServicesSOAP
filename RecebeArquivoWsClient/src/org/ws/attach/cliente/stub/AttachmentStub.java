@@ -103,16 +103,16 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
 
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
-        __operation.setName(new javax.xml.namespace.QName("http://org.ws",
-                "retornaArquivo"));
+        __operation.setName(new javax.xml.namespace.QName("http://org.ws/",
+                "recebeArquivo"));
         _service.addOperation(__operation);
 
         _operations[0] = __operation;
 
         __operation = new org.apache.axis2.description.OutInAxisOperation();
 
-        __operation.setName(new javax.xml.namespace.QName("http://org.ws",
-                "recebeArquivo"));
+        __operation.setName(new javax.xml.namespace.QName("http://org.ws/",
+                "retornaArquivo"));
         _service.addOperation(__operation);
 
         _operations[1] = __operation;
@@ -120,120 +120,6 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
 
     //populates the faults
     private void populateFaults() {
-    }
-
-    /**
-     * Auto generated method signature
-     *
-     * @see org.ws.attach.cliente.stub.Attachment#retornaArquivo
-     * @param retornaArquivo
-     */
-    public org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse retornaArquivo(
-        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo retornaArquivo)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.context.MessageContext _messageContext = null;
-
-        try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-            _operationClient.getOptions().setAction("urn:retornaArquivo");
-            _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-            addPropertyToOperationClient(_operationClient,
-                org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-                "&");
-
-            // create a message context
-            _messageContext = new org.apache.axis2.context.MessageContext();
-
-            // create SOAP envelope with that payload
-            org.apache.axiom.soap.SOAPEnvelope env = null;
-
-            env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                        .getSoapVersionURI()),
-                    retornaArquivo,
-                    optimizeContent(
-                        new javax.xml.namespace.QName("http://org.ws",
-                            "retornaArquivo")),
-                    new javax.xml.namespace.QName("http://org.ws",
-                        "retornaArquivo"));
-
-            //adding SOAP soap_headers
-            _serviceClient.addHeadersToEnvelope(env);
-            // set the message context with that soap envelope
-            _messageContext.setEnvelope(env);
-
-            // add the message contxt to the operation client
-            _operationClient.addMessageContext(_messageContext);
-
-            //execute the operation client
-            _operationClient.execute(true);
-
-            org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
-            org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
-
-            java.lang.Object object = fromOM(_returnEnv.getBody()
-                                                       .getFirstElement(),
-                    org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse.class,
-                    getEnvelopeNamespaces(_returnEnv));
-
-            return (org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse) object;
-        } catch (org.apache.axis2.AxisFault f) {
-            org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-            if (faultElt != null) {
-                if (faultExceptionNameMap.containsKey(
-                            new org.apache.axis2.client.FaultMapKey(
-                                faultElt.getQName(), "retornaArquivo"))) {
-                    //make the fault by reflection
-                    try {
-                        java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                    faultElt.getQName(), "retornaArquivo"));
-                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                        //message class
-                        java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                    faultElt.getQName(), "retornaArquivo"));
-                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                        java.lang.Object messageObject = fromOM(faultElt,
-                                messageClass, null);
-                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                new java.lang.Class[] { messageClass });
-                        m.invoke(ex, new java.lang.Object[] { messageObject });
-
-                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
-                    } catch (java.lang.ClassCastException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.ClassNotFoundException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.NoSuchMethodException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.reflect.InvocationTargetException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.IllegalAccessException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    } catch (java.lang.InstantiationException e) {
-                        // we cannot intantiate the class - throw the original Axis fault
-                        throw f;
-                    }
-                } else {
-                    throw f;
-                }
-            } else {
-                throw f;
-            }
-        } finally {
-            if (_messageContext.getTransportOut() != null) {
-                _messageContext.getTransportOut().getSender()
-                               .cleanup(_messageContext);
-            }
-        }
     }
 
     /**
@@ -248,7 +134,7 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
         org.apache.axis2.context.MessageContext _messageContext = null;
 
         try {
-            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
             _operationClient.getOptions().setAction("urn:recebeArquivo");
             _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
 
@@ -266,9 +152,9 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
                                                         .getSoapVersionURI()),
                     recebeArquivo,
                     optimizeContent(
-                        new javax.xml.namespace.QName("http://org.ws",
+                        new javax.xml.namespace.QName("http://org.ws/",
                             "recebeArquivo")),
-                    new javax.xml.namespace.QName("http://org.ws",
+                    new javax.xml.namespace.QName("http://org.ws/",
                         "recebeArquivo"));
 
             //adding SOAP soap_headers
@@ -351,6 +237,120 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
     }
 
     /**
+     * Auto generated method signature
+     *
+     * @see org.ws.attach.cliente.stub.Attachment#retornaArquivo
+     * @param retornaArquivo
+     */
+    public org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse retornaArquivo(
+        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo retornaArquivo)
+        throws java.rmi.RemoteException {
+        org.apache.axis2.context.MessageContext _messageContext = null;
+
+        try {
+            org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
+            _operationClient.getOptions().setAction("urn:retornaArquivo");
+            _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
+
+            addPropertyToOperationClient(_operationClient,
+                org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
+                "&");
+
+            // create a message context
+            _messageContext = new org.apache.axis2.context.MessageContext();
+
+            // create SOAP envelope with that payload
+            org.apache.axiom.soap.SOAPEnvelope env = null;
+
+            env = toEnvelope(getFactory(_operationClient.getOptions()
+                                                        .getSoapVersionURI()),
+                    retornaArquivo,
+                    optimizeContent(
+                        new javax.xml.namespace.QName("http://org.ws/",
+                            "retornaArquivo")),
+                    new javax.xml.namespace.QName("http://org.ws/",
+                        "retornaArquivo"));
+
+            //adding SOAP soap_headers
+            _serviceClient.addHeadersToEnvelope(env);
+            // set the message context with that soap envelope
+            _messageContext.setEnvelope(env);
+
+            // add the message contxt to the operation client
+            _operationClient.addMessageContext(_messageContext);
+
+            //execute the operation client
+            _operationClient.execute(true);
+
+            org.apache.axis2.context.MessageContext _returnMessageContext = _operationClient.getMessageContext(org.apache.axis2.wsdl.WSDLConstants.MESSAGE_LABEL_IN_VALUE);
+            org.apache.axiom.soap.SOAPEnvelope _returnEnv = _returnMessageContext.getEnvelope();
+
+            java.lang.Object object = fromOM(_returnEnv.getBody()
+                                                       .getFirstElement(),
+                    org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse.class,
+                    getEnvelopeNamespaces(_returnEnv));
+
+            return (org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse) object;
+        } catch (org.apache.axis2.AxisFault f) {
+            org.apache.axiom.om.OMElement faultElt = f.getDetail();
+
+            if (faultElt != null) {
+                if (faultExceptionNameMap.containsKey(
+                            new org.apache.axis2.client.FaultMapKey(
+                                faultElt.getQName(), "retornaArquivo"))) {
+                    //make the fault by reflection
+                    try {
+                        java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
+                                    faultElt.getQName(), "retornaArquivo"));
+                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+                        java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
+                        java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
+
+                        //message class
+                        java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
+                                    faultElt.getQName(), "retornaArquivo"));
+                        java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
+                        java.lang.Object messageObject = fromOM(faultElt,
+                                messageClass, null);
+                        java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
+                                new java.lang.Class[] { messageClass });
+                        m.invoke(ex, new java.lang.Object[] { messageObject });
+
+                        throw new java.rmi.RemoteException(ex.getMessage(), ex);
+                    } catch (java.lang.ClassCastException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.ClassNotFoundException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.NoSuchMethodException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.IllegalAccessException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    } catch (java.lang.InstantiationException e) {
+                        // we cannot intantiate the class - throw the original Axis fault
+                        throw f;
+                    }
+                } else {
+                    throw f;
+                }
+            } else {
+                throw f;
+            }
+        } finally {
+            if (_messageContext.getTransportOut() != null) {
+                _messageContext.getTransportOut().getSender()
+                               .cleanup(_messageContext);
+            }
+        }
+    }
+
+    /**
      *  A utility method that copies the namepaces from the SOAPEnvelope
      */
     private java.util.Map getEnvelopeNamespaces(
@@ -381,28 +381,6 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
     }
 
     private org.apache.axiom.om.OMElement toOM(
-        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo param,
-        boolean optimizeContent) throws org.apache.axis2.AxisFault {
-        try {
-            return param.getOMElement(org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo.MY_QNAME,
-                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-        } catch (org.apache.axis2.databinding.ADBException e) {
-            throw org.apache.axis2.AxisFault.makeFault(e);
-        }
-    }
-
-    private org.apache.axiom.om.OMElement toOM(
-        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse param,
-        boolean optimizeContent) throws org.apache.axis2.AxisFault {
-        try {
-            return param.getOMElement(org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse.MY_QNAME,
-                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
-        } catch (org.apache.axis2.databinding.ADBException e) {
-            throw org.apache.axis2.AxisFault.makeFault(e);
-        }
-    }
-
-    private org.apache.axiom.om.OMElement toOM(
         org.ws.attach.cliente.stub.AttachmentStub.RecebeArquivo param,
         boolean optimizeContent) throws org.apache.axis2.AxisFault {
         try {
@@ -424,16 +402,38 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
         }
     }
 
+    private org.apache.axiom.om.OMElement toOM(
+        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo param,
+        boolean optimizeContent) throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
+    private org.apache.axiom.om.OMElement toOM(
+        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse param,
+        boolean optimizeContent) throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
     private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
         org.apache.axiom.soap.SOAPFactory factory,
-        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo param,
+        org.ws.attach.cliente.stub.AttachmentStub.RecebeArquivo param,
         boolean optimizeContent, javax.xml.namespace.QName methodQName)
         throws org.apache.axis2.AxisFault {
         try {
             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
             emptyEnvelope.getBody()
                          .addChild(param.getOMElement(
-                    org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo.MY_QNAME,
+                    org.ws.attach.cliente.stub.AttachmentStub.RecebeArquivo.MY_QNAME,
                     factory));
 
             return emptyEnvelope;
@@ -445,14 +445,14 @@ public class AttachmentStub extends org.apache.axis2.client.Stub {
     /* methods to provide back word compatibility */
     private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
         org.apache.axiom.soap.SOAPFactory factory,
-        org.ws.attach.cliente.stub.AttachmentStub.RecebeArquivo param,
+        org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo param,
         boolean optimizeContent, javax.xml.namespace.QName methodQName)
         throws org.apache.axis2.AxisFault {
         try {
             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
             emptyEnvelope.getBody()
                          .addChild(param.getOMElement(
-                    org.ws.attach.cliente.stub.AttachmentStub.RecebeArquivo.MY_QNAME,
+                    org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivo.MY_QNAME,
                     factory));
 
             return emptyEnvelope;
