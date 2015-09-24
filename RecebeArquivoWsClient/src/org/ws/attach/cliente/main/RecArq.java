@@ -14,7 +14,14 @@ public class RecArq {
 	public static void main(String[] args) {
 		// Informa o diretório onde se encontra o arquivo desejado
 		String path = "D:/TEMP/";
-		String dstPath = "D:/TEMP/WS/";
+		String dstPath = null;
+		
+		if (args.length == 0) {
+			dstPath = "D:/TEMP/WS/";
+		}
+		else {
+			dstPath = args[0];
+		}
 	    
 		// Informa o nome do arquivo
 		String nomeArquivo = "URHNI_TABELAS_20120720.xls";
