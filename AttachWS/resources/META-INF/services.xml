@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<service name="Attachment" scope="Application" targetNamespace="http://org.ws">
+<service name="Attachment" scope="application" targetNamespace="http://org.ws/">
   <description>
     Attachment Service
   </description>
