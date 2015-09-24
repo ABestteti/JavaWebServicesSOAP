@@ -9,6 +9,6 @@
     <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
       class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
   </messageReceivers>
-  <schema schamaNamespace="http://org.ws/xsd"/>
+  <schema schemaNamespace="http://org.ws/xsd"/>
   <parameter name="ServiceClass">org.ws.attach.Attachment</parameter>
 </service>

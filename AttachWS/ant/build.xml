@@ -24,7 +24,7 @@
        classpathref="axis2.classpath"/>
     <java2wsdl classname="org.ws.attach.Attachment"
        outputLocation="${basedir}/${build.dir}"
-       targetNamespace="http://org.ws"
+       targetNamespace="http://org.ws/"
        schemaTargetNamespace="http://org.ws/xsd">
        <classpath>
          <pathelement path="${axis2.classpath}"/>
