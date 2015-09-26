@@ -12,23 +12,22 @@ import org.ws.attach.cliente.stub.AttachmentStub.RetornaArquivoResponse;
 
 public class RecArq {
 	public static void main(String[] args) {
-		// Informa o diretório onde se encontra o arquivo desejado
+		// Informa o diretorio onde se encontra o arquivo desejado
 		String path = "D:/TEMP/";
-		String dstPath = null;
-		
-		if (args.length == 0) {
-			dstPath = "D:/TEMP/WS/";
-		}
-		else {
-			dstPath = args[0];
-		}
-	    
+		String dstPath = "D:/TEMP/WS/";
+		String host = "localhost";
 		// Informa o nome do arquivo
 		String nomeArquivo = "URHNI_TABELAS_20120720.xls";
-
+		
+		if (args.length > 0) {
+			nomeArquivo = args[0];
+			path = args[1];
+			dstPath = args[2];
+		}
+	    
 		try {
 			// Cria um objeto que aponta para o web service
-			AttachmentStub stub = new AttachmentStub("http://10.0.50.152:8080/axis2/services/Attachment");
+			AttachmentStub stub = new AttachmentStub("http://"+ host + ":8080/axis2/services/Attachment");
 			
 			// Cria um objeto para sertar os valores que devem ser enviados
 			RetornaArquivo retornaArquivo = new RetornaArquivo();
@@ -52,6 +51,7 @@ public class RecArq {
 			System.out.println("Arquivo gravado em " + dstPath);
 		} catch (Exception e) {
 			System.out.println("Falha ao receber arquivo " + nomeArquivo);
+			System.out.println(e.getMessage());
 		}
 	}
 }
