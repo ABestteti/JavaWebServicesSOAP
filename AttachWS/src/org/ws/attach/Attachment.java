@@ -15,7 +15,7 @@ public class Attachment {
 			// Criando objeto que aponta para o arquivo requisitado
 			File file = new File(pathArquivo + nomeArquivo);
 
-			// Criando o objeto que irá retornar o arquivo
+			// Criando o objeto que ira retornar o arquivo
 			DataHandler dh = new DataHandler(new FileDataSource(file));
 			
 			// Retornando o arquivo
@@ -25,15 +25,15 @@ public class Attachment {
 		}
 	}
 	
-	// Esse web method recebe um arquivo e irá persistí-lo localmente
+	// Esse web method recebe um arquivo e ira persisti-lo localmente
 	public boolean recebeArquivo(DataHandler arquivo, String pathArquivo, String nomeArquivo) {
-		// Verifica se o arquivo recebido é nulo
+		// Verifica se o arquivo recebido e nulo
 		if (arquivo == null) {
 			return false;			
 		}
 		
 		try {
-			// Criando o arquivo de destino para persistí-lo em disco
+			// Criando o arquivo de destino para persisti-lo em disco
 			File novoArquivo = new File(pathArquivo + nomeArquivo);
 			OutputStream out = new FileOutputStream(novoArquivo);
 			
